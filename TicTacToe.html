@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="TicTacToe.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Tic Tac Toe</div>
+    <ul class="nav-links">
+      <li><a id="about">About</a></li>
+      <li><a id="classic">Classic</a></li>
+      <li><a id="tictacwar">TicTacWar</a></li>
+      <li><a id="takeover">TakeOver</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  <!-- Game Container -->
+   <div class="container" id="About">
+    <h1 class = "title">ABOUT</h1>
+    <h3>Hi, Welcome to the TicTacToe World.</h3>
+    <h4>This is my first Javascript project made as <br> I learn some of the basics about Javascript, Html and CSS</h4>
+   </div>
+  <div class="container" id="Classic">
+    <h1 class="title">Tic Tac Toe</h1>
+    <div class="board" id="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+    <button class="Reset">Reset Game</button>
+    <div id="message"></div>
+  </div>
+  <div class="container" id="TicTacWar">
+    <h1 class="title">Tic Tac War</h1>
+    <div class="board" >
+      <div class = "board smallBoard" board-index="0">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="1">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="2">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="3">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="4">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="5">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="6">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="7">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+      <div class = "board smallBoard" board-index="8">
+        <div class="cell small" data-index="0"></div>
+        <div class="cell small" data-index="1"></div>
+        <div class="cell small" data-index="2"></div>
+        <div class="cell small" data-index="3"></div>
+        <div class="cell small" data-index="4"></div>
+        <div class="cell small" data-index="5"></div>
+        <div class="cell small" data-index="6"></div>
+        <div class="cell small" data-index="7"></div>
+        <div class="cell small" data-index="8"></div>
+      </div>
+    </div>
+    <button class = "Reset">
+      Reset Button 
+    </button>
+    <div id="message2"></div>
+  </div>
+  <script src="TicTacToe.js"></script>
+</body>
+</html>
