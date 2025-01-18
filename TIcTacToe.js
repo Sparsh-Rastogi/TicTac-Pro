@@ -1,4 +1,4 @@
-frames = ['About','Classic','TicTacWar'];
+frames = ['About','Classic','TicTacWar','TakeOver'];
 current = 'About';
 
 /* flags */
@@ -33,7 +33,6 @@ const Classic = (event) => {
   const board = document.getElementById("board");
   const cells = [...document.querySelectorAll('.cell')].filter(element => 
     !element.classList.contains('small'));
-  console.log(cells);
   const resetButton = document.querySelectorAll(".Reset")[0];
   const message = document.getElementById("message");
   let currentPlayer = "X";
@@ -45,12 +44,10 @@ const Classic = (event) => {
   ];
 
   function handleCellClick(event) {
-    console.log(gameActive);
     const cell = event.target;
     const cellIndex = cell.getAttribute("data-index");
 
     if (classicGameState[cellIndex] !== "" || !gameActive) return;
-    console.log("i reached at 47");
     classicGameState[cellIndex] = currentPlayer;
     cell.textContent = currentPlayer;
     cell.classList.add("taken");
@@ -79,7 +76,6 @@ const Classic = (event) => {
   function resetGame() {
     currentPlayer = "X";
     gameActive = true;
-    console.log("this is being executed");
     classicGameState = ["", "", "", "", "", "", "", "", ""];
     cells.forEach(cell => {
       cell.textContent = "";
@@ -89,12 +85,10 @@ const Classic = (event) => {
   }
 
   if(isClassic){
-    //console.log(isClassic + " this is isclassic");
     resetGame();
     return;
   }
   else{
-    console.log("here 123");
     isClassic = true;
     for (let index = 0; index < cells.length; index++) {
       if(!cells[index].matches(".small"))cells[index].addEventListener("click",handleCellClick);
@@ -103,7 +97,6 @@ const Classic = (event) => {
     resetButton.addEventListener("click", resetGame);
   }
 }
-
 const TicTacWar = (event) => {
   document.getElementById(current).classList.add('hidden');
   current = 'TicTacWar';
@@ -112,7 +105,7 @@ const TicTacWar = (event) => {
   gameActive = true;
   let resetButton = document.querySelectorAll(".Reset")[1];
   cells = document.querySelectorAll(".small.cell");
-  message = document.getElementById("message2");
+  message = document.querySelector(".message2");
   const winningConditions = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
     [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
@@ -123,10 +116,8 @@ const TicTacWar = (event) => {
     const cellIndex = cell.getAttribute("data-index");
     const game = cell.parentElement;
     const gameIndex = game.getAttribute("board-index");
-    console.log(ticTacWarState);
 
     if (ticTacWarState[gameIndex][cellIndex] !== "" || !gameActive || (gameIndex!=currentGame && currentGame!=-1)) return;
-
     ticTacWarState[gameIndex][cellIndex] = currentPlayer;
     cell.textContent = currentPlayer;
     cell.classList.add("taken");
@@ -134,7 +125,6 @@ const TicTacWar = (event) => {
     checkResult();
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     currentGame = cellIndex;
-    console.log(ticTacWarState[currentGame]);
     if(!ticTacWarState[currentGame].includes("")){
       currentGame = -1;
       for (let i = 0; i < cells.length; i++) {
@@ -176,10 +166,7 @@ const TicTacWar = (event) => {
 
     if (!ticTacWarState[currentGame].includes("") && !BigBoardState[currentGame]) {
       message.textContent = "A match is drawn";
-      for(let i = 0;i<9;i++){
-        cells[currentGame*9 + i] = "";
-        cells[currentGame*9 + i].textContent = "";
-      }
+      BigBoardState[currentGame]="+";
     }
     for (const condition of winningConditions) {
       const [a, b, c] = condition;
@@ -199,6 +186,7 @@ const TicTacWar = (event) => {
         cells[currentGame*9 + i] = "";
         cells[currentGame*9 + i].textContent = "";
       }
+      gameActive = false;
     }
   }
   function resetGame() {
@@ -208,6 +196,8 @@ const TicTacWar = (event) => {
     for (let index = 0; index < 9; index++) {
       ticTacWarState.push(["","","","","","","","",""]);
     }
+    BigBoardState = ["","","","","","","","",""];
+    currentGame = -1;
     cells.forEach(cell => {
       cell.textContent = "";
       cell.classList.remove("taken");
@@ -219,16 +209,20 @@ const TicTacWar = (event) => {
     return;
   }
   else{
-    console.log("here 123");
     isTicTacWar = true;
     cells.forEach(cell => cell.addEventListener("click",handleCellClick));
     resetButton.addEventListener("click", resetGame);
   }
 }
-
+const TakeOver = (event) => {
+  document.getElementById(current).classList.add('hidden');
+  current = 'TakeOver';
+  document.getElementById(current).classList.remove('hidden');
+}
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("classic").addEventListener("click",Classic);
   document.getElementById("about").addEventListener('click', About);
   document.getElementById("tictacwar").addEventListener('click',TicTacWar);
+  document.getElementById("takeover").addEventListener('click',TakeOver);
 });
 
